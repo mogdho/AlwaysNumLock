@@ -17,5 +17,5 @@ AlwaysNumLock is a lightweight AutoHotkey v2 utility designed to force your keyb
 
 ---
 ### 🔗 Download/Source link
-- Download/Source link - [Insert Your GitHub Repo URL Here]
+- Download/Source link - https://github.com/mogdho/AlwaysNumLock/
 
