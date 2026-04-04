@@ -1,4 +1,7 @@
 # AlwaysNumLock
+![AutoHotkey](https://img.shields.io/badge/Language-AutoHotkey_v2.0-red?style=for-the-badge&logo=autohotkey)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Windows-blue?style=for-the-badge&logo=windows)
 
 AlwaysNumLock is a lightweight AutoHotkey v2 utility designed to force your keyboard's NumLock key to remain active at all times. Returning from sleep mode or accidental keystrokes can often disable NumLock, disrupting workflows. This script ensures a persistent hardware state to prevent such interruptions.
 
