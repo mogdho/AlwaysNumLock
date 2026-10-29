@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 266" width="600" height="266" role="img" aria-label="Tray menu: Pause, Start with Windows (checked), Num Lock on at sign-in screen (checked), Exit">
+  <style>
+    .ui { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; }
+    .hl { animation: hl 8s infinite ease-in-out; }
+    @keyframes hl { 0%,12% {transform: translateY(0)} 20%,42% {transform: translateY(36px)} 50%,72% {transform: translateY(72px)} 80%,100% {transform: translateY(0)} }
+    @media (prefers-reduced-motion: reduce) { .hl { animation: none; } }
+  </style>
+  <rect width="600" height="266" rx="16" fill="#0f172a"/>
+
+  <rect x="24" y="20" width="290" height="206" rx="10" fill="#2b2b2b" stroke="#3f3f3f"/>
+  <text x="44" y="50" class="ui" font-size="14" fill="#8a8a8a">AlwaysNumLock</text>
+  <rect x="32" y="62" width="274" height="1" fill="#454545"/>
+  <rect class="hl" x="30" y="70" width="278" height="32" rx="6" fill="#3d3d3d"/>
+  <text x="68" y="91" class="ui" font-size="14" fill="#f3f3f3">Pause</text>
+  <text x="44" y="127" class="ui" font-size="14" fill="#f3f3f3">✓</text>
+  <text x="68" y="127" class="ui" font-size="14" fill="#f3f3f3">Start with Windows</text>
+  <text x="44" y="163" class="ui" font-size="14" fill="#f3f3f3">✓</text>
+  <text x="68" y="163" class="ui" font-size="14" fill="#f3f3f3">Num Lock on at sign-in screen</text>
+  <rect x="32" y="180" width="274" height="1" fill="#454545"/>
+  <text x="68" y="208" class="ui" font-size="14" fill="#f3f3f3">Exit</text>
+
+  <rect x="24" y="236" width="290" height="22" rx="6" fill="#1c1c1c"/>
+  <g fill="none" stroke="#fff" stroke-width="1.2"><rect x="264" y="239.5" width="8" height="7" rx="1.8"/><rect x="260" y="247.5" width="7.5" height="7" rx="1.8"/><rect x="268.5" y="247.5" width="7.5" height="7" rx="1.8"/></g>
+  <path d="M268 234 v-4" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <g class="ui" font-size="14" fill="#cbd5e1">
+    <text x="336" y="90"><tspan font-weight="700" fill="#f8fafc">Pause</tspan> — lets you turn Num Lock</text>
+    <text x="336" y="108">off, e.g. for a game</text>
+    <text x="336" y="128"><tspan font-weight="700" fill="#f8fafc">Start with Windows</tspan> — runs at</text>
+    <text x="336" y="146">login, no admin pop-up</text>
+    <text x="336" y="166"><tspan font-weight="700" fill="#f8fafc">Sign-in screen</tspan> — Num Lock is</text>
+    <text x="336" y="184">on when you type your PIN</text>
+    <text x="336" y="234" fill="#94a3b8">Right-click the tray icon</text>
+    <text x="336" y="252" fill="#94a3b8">Double-click it = Pause / Resume</text>
+  </g>
+</svg>

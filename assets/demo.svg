@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360" role="img" aria-label="Animation: without the script, pressing Num Lock turns it off and the number pad types arrows; with AlwaysNumLock it stays on and keeps typing numbers, even after sleep">
+  <style>
+    .ui { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; }
+    .a { animation-duration: 9s; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+
+    /* Num key press at 22% */
+    .press { animation-name: press; }
+    @keyframes press { 0%,20% {transform: translateY(0)} 22% {transform: translateY(4px)} 24%,100% {transform: translateY(0)} }
+    .pglow { animation-name: pglow; }
+    @keyframes pglow { 0%,20% {opacity: 0} 22% {opacity: 1} 25%,100% {opacity: 0} }
+
+    /* Left panel: LED goes off and output becomes arrows */
+    .ledOffL { animation-name: ledOffL; }
+    @keyframes ledOffL { 0%,22% {opacity: 1} 23%,94% {opacity: 0} 97%,100% {opacity: 1} }
+    .numsL  { animation-name: numsL; }
+    @keyframes numsL { 0%,26% {opacity: 1} 29%,94% {opacity: 0} 97%,100% {opacity: 1} }
+    .arrowL { animation-name: arrowL; }
+    @keyframes arrowL { 0%,26% {opacity: 0} 29%,94% {opacity: 1} 97%,100% {opacity: 0} }
+    .badL { animation-name: badL; }
+    @keyframes badL { 0%,27% {opacity: 0} 30%,92% {opacity: 1} 95%,100% {opacity: 0} }
+
+    /* Right panel: blocked ripple, stays on */
+    .ripple { animation-name: ripple; transform-box: fill-box; transform-origin: center; }
+    @keyframes ripple { 0%,22% {opacity: 0; transform: scale(1)} 23% {opacity: .9; transform: scale(1)} 34%,100% {opacity: 0; transform: scale(3)} }
+    .goodR { animation-name: goodR; }
+    @keyframes goodR { 0%,27% {opacity: 0} 30%,92% {opacity: 1} 95%,100% {opacity: 0} }
+
+    /* Sleep / wake overlay */
+    .sleep { animation-name: sleep; }
+    @keyframes sleep { 0%,50% {opacity: 0} 54%,66% {opacity: 1} 70%,100% {opacity: 0} }
+    .wake { animation-name: wake; }
+    @keyframes wake { 0%,70% {opacity: 0} 73%,90% {opacity: 1} 94%,100% {opacity: 0} }
+    .ripple2 { animation-name: ripple2; transform-box: fill-box; transform-origin: center; }
+    @keyframes ripple2 { 0%,70% {opacity: 0; transform: scale(1)} 71% {opacity: .9; transform: scale(1)} 82%,100% {opacity: 0; transform: scale(3)} }
+
+    .cap1 { animation-name: cap1; }
+    @keyframes cap1 { 0%,4% {opacity: 0} 8%,46% {opacity: 1} 50%,100% {opacity: 0} }
+    .cap2 { animation-name: cap2; }
+    @keyframes cap2 { 0%,50% {opacity: 0} 54%,92% {opacity: 1} 96%,100% {opacity: 0} }
+
+    @media (prefers-reduced-motion: reduce) {
+      .a { animation: none !important; }
+      .ledOffL, .numsL, .ripple, .ripple2, .sleep, .wake, .cap2 { opacity: 0; }
+    }
+  </style>
+
+  <rect width="800" height="360" rx="18" fill="#0f172a"/>
+
+  <!-- Numpad template -->
+  <defs>
+    <g id="pad" class="ui" font-size="14" font-weight="600" text-anchor="middle" fill="#94a3b8">
+      <g fill="#1e293b" stroke="#334155">
+        <rect x="48"  y="0"   width="40" height="40" rx="7"/><rect x="96"  y="0"   width="40" height="40" rx="7"/><rect x="144" y="0"   width="40" height="40" rx="7"/>
+        <rect x="0"   y="48"  width="40" height="40" rx="7"/><rect x="48"  y="48"  width="40" height="40" rx="7"/><rect x="96"  y="48"  width="40" height="40" rx="7"/><rect x="144" y="48"  width="40" height="88" rx="7"/>
+        <rect x="0"   y="96"  width="40" height="40" rx="7"/><rect x="48"  y="96"  width="40" height="40" rx="7"/><rect x="96"  y="96"  width="40" height="40" rx="7"/>
+        <rect x="0"   y="144" width="40" height="40" rx="7" stroke="#60a5fa"/><rect x="48"  y="144" width="40" height="40" rx="7" stroke="#60a5fa"/><rect x="96"  y="144" width="40" height="40" rx="7" stroke="#60a5fa"/><rect x="144" y="144" width="40" height="88" rx="7"/>
+        <rect x="0"   y="192" width="88" height="40" rx="7"/><rect x="96"  y="192" width="40" height="40" rx="7"/>
+      </g>
+      <text x="68" y="25">/</text><text x="116" y="25">*</text><text x="164" y="25">−</text>
+      <text x="20" y="73">7</text><text x="68" y="73">8</text><text x="116" y="73">9</text><text x="164" y="97">+</text>
+      <text x="20" y="121">4</text><text x="68" y="121">5</text><text x="116" y="121">6</text>
+      <text x="20" y="169" fill="#e2e8f0">1</text><text x="68" y="169" fill="#e2e8f0">2</text><text x="116" y="169" fill="#e2e8f0">3</text><text x="164" y="193">↵</text>
+      <text x="44" y="217">0</text><text x="116" y="217">.</text>
+    </g>
+    <g id="numkey">
+      <rect x="0" y="0" width="40" height="40" rx="7" fill="#334155" stroke="#64748b"/>
+      <rect class="a pglow" x="0" y="0" width="40" height="40" rx="7" fill="#3b82f6"/>
+      <text x="20" y="25" text-anchor="middle" class="ui" font-size="12" font-weight="700" fill="#f8fafc">Num</text>
+    </g>
+  </defs>
+
+  <!-- LEFT PANEL: without -->
+  <rect x="24" y="20" width="364" height="276" rx="14" fill="#111827" stroke="#7f1d1d"/>
+  <text x="206" y="50" text-anchor="middle" class="ui" font-size="17" font-weight="700" fill="#fca5a5">Without the script</text>
+  <use href="#pad" x="48" y="70"/>
+  <g class="a press"><use href="#numkey" x="48" y="70"/></g>
+  <!-- LED -->
+  <text x="300" y="86" text-anchor="middle" class="ui" font-size="11" font-weight="700" fill="#64748b" letter-spacing="1">NUM LOCK</text>
+  <circle cx="300" cy="104" r="11" fill="#1f2937" stroke="#374151"/>
+  <circle class="a ledOffL" cx="300" cy="104" r="11" fill="#22c55e"/>
+  <!-- Output -->
+  <text x="300" y="160" text-anchor="middle" class="ui" font-size="12" fill="#64748b">Typing 1 2 3 gives</text>
+  <rect x="252" y="170" width="96" height="40" rx="8" fill="#0b1220" stroke="#334155"/>
+  <text class="a numsL"  x="300" y="197" text-anchor="middle" font-size="20" font-weight="700" fill="#4ade80" font-family="Segoe UI, system-ui, sans-serif">123</text>
+  <text class="a arrowL" x="300" y="197" text-anchor="middle" font-size="16" font-weight="700" fill="#f87171" font-family="Segoe UI, system-ui, sans-serif">End ↓ PgDn</text>
+  <g class="a badL">
+    <rect x="236" y="226" width="128" height="26" rx="13" fill="#7f1d1d"/>
+    <text x="300" y="244" text-anchor="middle" class="ui" font-size="13" font-weight="700" fill="#fecaca">✗ Num Lock is OFF</text>
+  </g>
+
+  <!-- RIGHT PANEL: with -->
+  <rect x="412" y="20" width="364" height="276" rx="14" fill="#111827" stroke="#14532d"/>
+  <text x="594" y="50" text-anchor="middle" class="ui" font-size="17" font-weight="700" fill="#86efac">With AlwaysNumLock</text>
+  <use href="#pad" x="436" y="70"/>
+  <g class="a press"><use href="#numkey" x="436" y="70"/></g>
+  <circle class="a ripple" cx="456" cy="90" r="20" fill="none" stroke="#22c55e" stroke-width="3"/>
+  <text x="688" y="86" text-anchor="middle" class="ui" font-size="11" font-weight="700" fill="#64748b" letter-spacing="1">NUM LOCK</text>
+  <circle cx="688" cy="104" r="11" fill="#22c55e"/>
+  <circle cx="688" cy="104" r="16" fill="#22c55e" fill-opacity="0.18"/>
+  <circle class="a ripple2" cx="688" cy="104" r="11" fill="none" stroke="#22c55e" stroke-width="3"/>
+  <text x="688" y="160" text-anchor="middle" class="ui" font-size="12" fill="#64748b">Typing 1 2 3 gives</text>
+  <rect x="640" y="170" width="96" height="40" rx="8" fill="#0b1220" stroke="#334155"/>
+  <text x="688" y="197" text-anchor="middle" font-size="20" font-weight="700" fill="#4ade80" font-family="Segoe UI, system-ui, sans-serif">123</text>
+  <g class="a goodR">
+    <rect x="624" y="226" width="128" height="26" rx="13" fill="#14532d"/>
+    <text x="688" y="244" text-anchor="middle" class="ui" font-size="13" font-weight="700" fill="#bbf7d0">✓ Still ON</text>
+  </g>
+
+  <!-- Sleep / wake banner across both panels -->
+  <g class="a sleep">
+    <rect x="250" y="130" width="300" height="56" rx="28" fill="#1e1b4b" stroke="#6366f1"/>
+    <text x="400" y="165" text-anchor="middle" class="ui" font-size="18" font-weight="700" fill="#c7d2fe">🌙  PC goes to sleep…</text>
+  </g>
+  <g class="a wake">
+    <rect x="250" y="130" width="300" height="56" rx="28" fill="#422006" stroke="#f59e0b"/>
+    <text x="400" y="165" text-anchor="middle" class="ui" font-size="18" font-weight="700" fill="#fde68a">☀  …and wakes up</text>
+  </g>
+
+  <!-- Captions -->
+  <g class="ui" font-size="21" font-weight="700" text-anchor="middle" fill="#f8fafc">
+    <text class="a cap1" x="400" y="334">Bumped <tspan fill="#60a5fa">Num Lock</tspan> by accident?  It stays <tspan fill="#4ade80">ON</tspan>.</text>
+    <text class="a cap2" x="400" y="334">After sleep or the lock screen?  Still <tspan fill="#4ade80">ON</tspan>.</text>
+  </g>
+</svg>
