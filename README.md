@@ -5,6 +5,8 @@
 
 **Never type arrows instead of numbers again.** AlwaysNumLock keeps your keyboard's `Num Lock` switched **ON**, no matter what.
 
+**⬇️ Download and setup guide: [mogdhopaul.com/alwaysnumlock](https://mogdhopaul.com/alwaysnumlock/)**
+
 <p align="center">
   <img src="assets/demo.svg" width="100%" alt="Animation: without the script, pressing Num Lock turns it off and the number pad types arrows. With AlwaysNumLock it stays on, even after sleep.">
 </p>
